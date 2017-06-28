@@ -48,13 +48,6 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_CHARGING_CMDLINE_NAME := "androidboot.mode"
 BOARD_CHARGING_CMDLINE_VALUE := "chargerlogo"
 
-# Dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
-  endif
-endif
-
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
@@ -75,7 +68,7 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/knock_on"
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/lge/v500
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
-BOARD_KERNEL_CMDLINE += console=ttyHSL0,115200,n8 ehci-hcd.park=3 lpj=67677 androidboot.hardware=qcom vmalloc=400M
+BOARD_KERNEL_CMDLINE += console=ttyHSL0,115200,n8 ehci-hcd.park=3 lpj=67677 androidboot.hardware=qcom vmalloc=400M androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
